@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>*{
+    font-size: 20px;
+}
+    button{
+        margin-bottom: 30px;margin-top: 30px ;
+    }
+   body{font-size: 30px;
+         background-image: linear-gradient(55deg,rgb(5, 127, 209),rgb(54, 194, 219),rgb(159, 243, 204),rgb(201, 247, 187),rgb(247, 196, 86),rgb(235,90,99));
+         }
+    table{
+    margin-top: 50px;
+    text-align: center;
+    background-image: linear-gradient(60deg,rgb(253, 48, 33),rgb(73, 7, 7));
+    color: rgb(219, 211, 211);
+}
+
+#show th, #show td{
+    padding: 13px;
+}
+
+#btna td input{
+    width: 100%;
+}
+#lo{background-color: rgb(83, 243, 83);min-height: 100px;width: 600px;border-style: double;}
+#me{background-color: #fac832;min-height: 100px;width: 600px;border-style: double;}
+#hi{background-color: rgb(252, 50, 50);min-height: 100px;width: 600px;border-style: double;}
+#l{background-color: green;}
+#m{background-color: #FFBF00;}
+#h{background-color: red;}
+#footer,#header{background-color: black;color: blanchedalmond;text-align: center;}
+    #footer{bottom: 0px;font-size: 10px;position: fixed; height: 20px;width: 1500px;}
+        #header{top: 0%;font-size: 40px;height: 60px;}
+        input{height: 60px;width: 600px;}
+        td{width: 600px;}
+        #show{color: rgb(2, 6, 7);font-size: 10px;}
+        #btn{background-image: radial-gradient(white,black);color: rgb(46, 30, 7);font-size: 30px;font-weight: bolder;}
+</style>
+<body>
+    <div id="header">ToDoList</div><br><br>
+    <center><table><tr><td>
+        <table border="4">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <td><input type="text" name="fname" id="fname" placeholder="Enter the task...."></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>priority</th>
+                    <td><input type="text" name="lname" id="lname" placeholder="select the priority in the drop-down menu beside...."></td>
+                </tr>
+                
+                <tr id="btna">
+                    <td colspan="2"><input type="button" name="button" id="btn" value="Add" onclick="AddRow()"></td>
+                </tr>
+            </tbody>
+        </table></td>
+<td>
+<form>  
+    <b> Select your priority for the entered task: </b>  
+    <select id = "myList" onchange = "favTutorial()" >  
+    <option> ---Choose priority--- </option>  
+    <option id="l"> low </option>  
+    <option id="m"> medium </option>  
+    <option id="h"> high</option>  
+    </select>  
+      
+    </form> </td></tr> </table>
+        <table border="4" id="show">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Priority</th>
+                    
+                </tr>
+            </thead>
+        </table><button onclick="lows()">low</button>
+        <div id="lo"><b><u>LOW</u></b><br></div><button onclick="mediums()">medium</button>
+        <div id="me"><b><u>MEDIUM</u></b></div><button onclick="highs()">high</button>
+        <div id="hi"><b><u>HIGH</u></b></div>
+    </center><br><br><br>
+<div id="footer"><marquee>WebDevelopment Major Project(WD-MAJOR-MAY)@smartknower</marquee></div>
+
+
+    <script>
+       
+
+
+        var list1 = [];
+        var list2 = [];
+        var low=[];
+        var medium=[];
+        var high=[];
+        var n = 1;
+        var x = 0;
+        var lowx=document.getElementById("lo");
+        var mediumx=document.getElementById("me");
+        var highx=document.getElementById("hi");
+        function AddRow(){
+
+            var AddRown = document.getElementById('show');
+            var NewRow = AddRown.insertRow(n);
+
+            list1[x] = document.getElementById("fname").value;
+            list2[x] = document.getElementById("lname").value;
+    
+
+            var cel1 = NewRow.insertCell(0);
+            var cel2 = NewRow.insertCell(1);
+            
+          
+            cel1.innerHTML = list1[x];
+            cel2.innerHTML = list2[x];
+            if(list2[x]=="low"){NewRow.style.backgroundColor="green";
+            lowx.innerHTML=x+" "+list1[x];
+        }
+        if(list2[x]=="medium"){NewRow.style.backgroundColor="#FFBF00";
+        mediumx.innerHTML=x+" "+list1[x];
+    }
+        if(list2[x]=="high"){NewRow.style.backgroundColor="red";
+        highx.innerHTML=x+" "+list1[x];
+    }
+
+            n++;
+            x++;
+            function lows(){}
+        }
+        function favTutorial() {  
+        var mylist = document.getElementById("myList");  
+        document.getElementById("lname").value = mylist.options[mylist.selectedIndex].text;  
+        }  
+    </script>
+</body>
+</html>
